@@ -84,18 +84,26 @@ def connect_db_insert_update_delete(sql, type):
                            charset=charset)
     # 3.获取游标,目的就是执行sql语句
     cursor = conn.cursor()
-    # 4.执行sql语句
-    # 对数据库完成添加、删除、修改操作，需要提交到数据库
-    cursor.execute(sql)
     if type == "commit":
-        conn.commit()
-        # 关闭游标再关闭连接
-        cursor.close()
-        conn.close()
+        try:
+            # 4.执行sql语句
+            # 对数据库完成添加、删除、修改操作，需要提交到数据库
+            cursor.execute(sql)
+            conn.commit()
+        except Exception as e:
+            # 对数据进行撤销
+            e.with_traceback()
+            conn.rollback()
+        finally:
+            # 关闭游标再关闭连接
+            cursor.close()
+            conn.close()
         return 1
     elif type == "rollback":
-        conn.rollback()
-        # 关闭游标再关闭连接
-        cursor.close()
-        conn.close()
+        try:
+            conn.rollback()
+        finally:
+            # 关闭游标再关闭连接
+            cursor.close()
+            conn.close()
         return 0
