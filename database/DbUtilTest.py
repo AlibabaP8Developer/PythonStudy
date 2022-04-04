@@ -1,4 +1,5 @@
 import DbUtil
 
-result = DbUtil.connect_self("select * from user where sex=1")
+sql = "insert into user(id, username) values('1', '1')"
+result = DbUtil.connect_db_insert_update_delete(sql, "commit")
 print(result)
