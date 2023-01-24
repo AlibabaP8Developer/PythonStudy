@@ -3,6 +3,7 @@ pyecharts
 安装：pip install pyecharts
 Mac若报错pip未找到：执行 sudo python3 get-pip.py
 https://pyecharts.org/
+json格式化网站：ab173.com
 """
 # 导包
 from pyecharts.charts import Line
