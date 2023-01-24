@@ -102,8 +102,9 @@ def connect_db_insert_update_delete(sql, type):
     elif type == "rollback":
         try:
             conn.rollback()
+            return 1
         finally:
             # 关闭游标再关闭连接
             cursor.close()
             conn.close()
-        return 0
+            return -1
