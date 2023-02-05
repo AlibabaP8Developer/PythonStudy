@@ -23,9 +23,11 @@ class Student:
     def __le__(self, other):
         return self.age <= other.age
 
+    def __eq__(self, other):
+        return self.age == other.age
+
 
 stu1 = Student("朱重八", 11)
-stu2 = Student("朱高炽", 10)
-print(stu1 >= stu2)
-print(stu1 <= stu2)
-
+stu2 = Student("朱高炽", 11)
+print(stu1 == stu2)
+print(stu1 < stu2)
