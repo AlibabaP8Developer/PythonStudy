@@ -17,4 +17,3 @@ WARNING: The scripts pip, pip3 and pip3.9 are installed in '/Users/lizhenghang/L
     
 export PATH="$PATH:/Users/lizhenghang/Library/Python/3.9/bin"
 ```
-
