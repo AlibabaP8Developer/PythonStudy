@@ -20,6 +20,6 @@ rdd = sc.parallelize([1, 2, 3, 4, 5])
 #     return data * 10
 
 # rdd2 = rdd.map(func)
-rdd2 = rdd.map(lambda x: x + 10)
+rdd2 = rdd.map(lambda x: x * 10).map(lambda x: x + 5)
 
 print(rdd2.collect())
