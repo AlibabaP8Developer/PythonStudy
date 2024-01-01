@@ -1,4 +1,6 @@
-itheima python
+itheima python pycharm
 harmonyos itheima alibaba
 itcast pycharm alibaba jd
-itheima harmonyos
+itheima harmonyos alibaba
+python itheima harmonyos
+jd alibaba pycharm python
