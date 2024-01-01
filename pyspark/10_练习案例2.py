@@ -36,11 +36,19 @@ print('按城市分组按销售额聚合：', city_result_rdd.collect())
 # 1.6 按销售额聚合结果进行排序
 result_add = city_result_rdd.sortBy(lambda x: x[1], ascending=False, numPartitions=1)
 print('按销售额聚合结果进行排序：', result_add.collect())
-
+print('=======')
 # TODO 需求2：全部城市有哪些商品类别在售卖
 # 2.1 取出全部商品类别
-
+category_rdd = dict_add.map(lambda x: x['category']).distinct()
 # 2.2 对全部商品类别进行去重
-
+print('对全部商品类别进行去重：', category_rdd.collect())
+print('=======')
 # TODO 需求3：北京有哪些商品类别在售卖
 # 3.1 过滤北京的数据
+beijing_data_rdd = dict_add.filter(lambda x: x['areaName'] == '北京')
+print('北京：过滤北京的数据：', beijing_data_rdd.collect())
+# 3.2 取出全部商品类别
+result3_rdd = beijing_data_rdd.map(lambda x: x['category']).distinct()
+print('北京：取出全部商品类别：', result3_rdd.collect())
+# 3.3 进行商品类别去重
+
